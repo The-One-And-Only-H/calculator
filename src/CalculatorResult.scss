@@ -1,0 +1,16 @@
+.Wrapper {
+  height: 94px;
+  width: 100%;
+  text-align: right;
+  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  background: rgba(55, 55, 55, 0.01);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Result {
+  font-size: 28px;
+  margin: 5px;
+  text-align: right;
+}

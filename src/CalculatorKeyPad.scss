@@ -1,0 +1,72 @@
+.Buttons {
+  display: block;
+  -webkit-app-region: no-drag;
+}
+
+.Numbers {
+  width: 20%;
+  height: 54px;
+  font-size: 15px;
+  color: rgb(252, 3, 215);
+  border-right: 1px solid rgba(55, 55, 55, 0.05);
+  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  outline: none;
+}
+
+.SelectedNumber {
+  &:hover {
+    background-color: rgba(252, 3, 215, 0.1);
+    border-radius: 30px;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.Zero {
+  width: 20%;
+  height: 54px;
+  font-size: 15px;
+  color: rgb(252, 3, 215);
+  border-right: 1px solid rgba(55, 55, 55, 0.05);
+  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  outline: none;
+}
+
+.Symbols {
+  width: 20%;
+  height: 54px;
+  font-size: 15px;
+  border-right: 1px solid rgba(55, 55, 55, 0.05);
+  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  outline: none;
+}
+
+.SelectedSymbol {
+  &:hover {
+    background-color: rgba(252, 3, 215, 0.1);
+    color: rgb(252, 3, 215);
+    border-radius: 30px;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.Multiply {
+  width: 20%;
+  height: 54px;
+  font-size: 17px;
+  outline: none;
+
+  .SelectedSymbol {
+    transform: rotate(45deg);
+  }
+}
+
+.Equals {
+  width: 40%;
+  height: 54px;
+  font-size: 15px;
+  background-color: rgb(252, 3, 215);
+  color: white;
+  outline: none;
+}
