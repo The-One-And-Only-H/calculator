@@ -1,9 +1,10 @@
 .Buttons {
-  display: block;
-  -webkit-app-region: no-drag;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .Numbers {
+  flex: 1 0 21%;
   width: 20%;
   height: 54px;
   font-size: 15px;
@@ -13,17 +14,10 @@
   outline: none;
 }
 
-.SelectedNumber {
-  &:hover {
-    background-color: rgba(252, 3, 215, 0.1);
-    border-radius: 30px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-
 .Zero {
-  width: 20%;
+  text-align: left;
+  padding-left: 28px;
+  width: 50%;
   height: 54px;
   font-size: 15px;
   color: rgb(252, 3, 215);
@@ -33,6 +27,7 @@
 }
 
 .Symbols {
+  flex: 1 0 21%;
   width: 20%;
   height: 54px;
   font-size: 15px;
@@ -41,17 +36,17 @@
   outline: none;
 }
 
-.SelectedSymbol {
-  &:hover {
-    background-color: rgba(252, 3, 215, 0.1);
-    color: rgb(252, 3, 215);
-    border-radius: 30px;
-    padding: 10px;
-    text-align: center;
-  }
+.Save {
+  width: 50%;
+  height: 54px;
+  font-size: 15px;
+  background-color: rgb(252, 3, 215);
+  color: white;
+  outline: none;
 }
 
 .Multiply {
+  flex: 1 0 21%;
   width: 20%;
   height: 54px;
   font-size: 17px;
@@ -63,10 +58,9 @@
 }
 
 .Equals {
-  width: 40%;
+  width: 25%;
   height: 54px;
   font-size: 15px;
-  background-color: rgb(252, 3, 215);
-  color: white;
   outline: none;
 }
+

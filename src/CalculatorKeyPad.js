@@ -76,17 +76,37 @@ class CalculatorKeyPad extends Component {
   render() {
     return (
       <div className="Buttons">
-        <button className="Numbers" name="7" onClick={() => this.props.buttonPressed('num', 7)}>
-          <div className="SelectedNumber">7</div>
+        <button className="Symbols" name="AC" onClick={() => this.props.buttonPressed('clear')}>
+          <div className="SelectedSymbol">AC</div>
         </button>
-        <button className="Numbers" name="8" onClick={() => this.props.buttonPressed('num', 8)}>
-          <div className="SelectedNumber">8</div>
+        <button className="Save" name="S" onClick={() => this.props.buttonPressed('save')}>
+          SAVE
         </button>
-        <button className="Numbers" name="9" onClick={() => this.props.buttonPressed('num', 9)}>
-          <div className="SelectedNumber">9</div>
+        <button className="Symbols" name="÷" onClick={() => this.props.buttonPressed('op', '/')}>
+          <div className="SelectedSymbol">÷</div>
         </button>
-        <button className="Symbols" name="C" onClick={() => this.props.buttonPressed('clear')}>
-          <div className="SelectedSymbol">C</div>
+
+        <button className="Symbols" name="." onClick={() => this.props.buttonPressed('dot')}>
+          <div className="SelectedNumber">.</div>
+        </button>
+        <button className="Zero" name="0" onClick={() => this.props.buttonPressed('num', 0)}>
+          <div className="SelectedNumber">0</div>
+        </button>
+        <button className="Multiply" name="x" onClick={() => this.props.buttonPressed('op', '*')}>
+          <div className="SelectedSymbol">+</div>
+        </button>
+
+        <button className="Numbers" name="1" onClick={() => this.props.buttonPressed('num', 1)}>
+          <div className="SelectedNumber">1</div>
+        </button>
+        <button className="Numbers" name="2" onClick={() => this.props.buttonPressed('num', 2)}>
+          <div className="SelectedNumber">2</div>
+        </button>
+        <button className="Numbers" name="3" onClick={() => this.props.buttonPressed('num', 3)}>
+          <div className="SelectedNumber">3</div>
+        </button>
+        <button className="Symbols" name="-" onClick={() => this.props.buttonPressed('op', '-')}>
+          <div className="SelectedSymbol">-</div>
         </button>
 
         <button className="Numbers" name="4" onClick={() => this.props.buttonPressed('num', 4)}>
@@ -101,32 +121,16 @@ class CalculatorKeyPad extends Component {
         <button className="Symbols" name="+" onClick={() => this.props.buttonPressed('op', '+')}>
           <div className="SelectedSymbol">+</div>
         </button>
-        <button className="Symbols" name="-" onClick={() => this.props.buttonPressed('op', '-')}>
-          <div className="SelectedSymbol">-</div>
-        </button>
 
-        <button className="Numbers" name="1" onClick={() => this.props.buttonPressed('num', 1)}>
-          <div className="SelectedNumber">1</div>
+        <button className="Numbers" name="7" onClick={() => this.props.buttonPressed('num', 7)}>
+          <div className="SelectedNumber">7</div>
         </button>
-        <button className="Numbers" name="2" onClick={() => this.props.buttonPressed('num', 2)}>
-          <div className="SelectedNumber">2</div>
+        <button className="Numbers" name="8" onClick={() => this.props.buttonPressed('num', 8)}>
+          <div className="SelectedNumber">8</div>
         </button>
-        <button className="Numbers" name="3" onClick={() => this.props.buttonPressed('num', 3)}>
-          <div className="SelectedNumber">3</div>
-        </button>
-        <button className="Symbols" name="÷" onClick={() => this.props.buttonPressed('op', '/')}>
-          <div className="SelectedSymbol">÷</div>
-        </button>
-
-        <button className="Multiply" name="x" onClick={() => this.props.buttonPressed('op', '*')}>
-          <div className="SelectedSymbol">+</div>
-        </button>
-        <button className="Zero" name="0" onClick={() => this.props.buttonPressed('num', 0)}>
-          <div className="SelectedNumber">0</div>
-        </button>
-        <button className="Symbols" name="." onClick={() => this.props.buttonPressed('dot')}>
-          <div className="SelectedNumber">.</div>
-        </button>
+        <button className="Numbers" name="9" onClick={() => this.props.buttonPressed('num', 9)}>
+          <div className="SelectedNumber">9</div>
+        </button> 
         <button className="Equals" name="=" onClick={() => this.props.buttonPressed('equal', '=')}>
           =
         </button>

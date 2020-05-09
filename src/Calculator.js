@@ -4,6 +4,12 @@ import './Calculator.scss';
 import CalculatorResult from './CalculatorResult';
 import CalculatorKeyPad from './CalculatorKeyPad';
 
+// TO DO:
+// - Fix styles
+// - Invert expression 
+// - Add commas for long numbers 
+// - Fix fetch call to save result to CSV
+
 const performCalculation = (op, n1, n2) => {
   switch (op) {
     case '/':
@@ -24,6 +30,7 @@ class Calculator extends Component {
     super();
 
     this.state = {
+      expr: '',
       display: '0',
       operand: 0,
       operator: null,
@@ -32,13 +39,14 @@ class Calculator extends Component {
   }
 
   inputDigit(digit) {
-    const { display, newOperation } = this.state;
+    const { expr, display, newOperation } = this.state;
 
     if (this.state.display === 'Error') {
       return;
     }
 
     this.setState({
+      expr: expr + String(digit),
       display: newOperation ? String(digit) : display + String(digit),
       newOperation: false,
     });
@@ -54,7 +62,7 @@ class Calculator extends Component {
     // If the display does not contain a decimal point
     if (!display.includes('.')) {
       // Append the decimal point
-      this.setState({ display: `${display}.`, newOperation: false });
+      this.setState({ expr: `${display}.`, display: `${display}.`, newOperation: false });
     }
   }
 
@@ -89,6 +97,7 @@ class Calculator extends Component {
     }
 
     this.setState({
+      expr: String(display) + String(operator) + String(operand) + '=',
       display: String(result),
       operand: result,
       operator: null,
@@ -113,7 +122,10 @@ class Calculator extends Component {
     this.handleEqual();
 
     // Store the next operation to perform
-    this.setState({ operator: nextOperator });
+    this.setState({ 
+      expr: String(display) + String(nextOperator),
+      operator: nextOperator 
+    });
   }
 
   invertDisplay() {
@@ -136,10 +148,24 @@ class Calculator extends Component {
     });
   }
 
+  saveResult() {
+    fetch("http://localhost/php/Save.php", {
+      method: "post",
+      // body: "result=1000",
+      mode: "no-cors",
+      headers: 
+      {
+          "Content-Type": "application/x-www-form-urlencoded"
+      },
+    }).then(function(data) { console.log(data) })
+  }
+
   buttonPressed(type, button) {
     // console.log(type, button);
     if (type === 'op') {
       return this.handleOperator(button);
+    } else if (type === 'save') {
+      return this.saveResult();
     } else if (type === 'clear') {
       return this.resetCalculator();
     } else if (type === 'num') {
@@ -156,6 +182,7 @@ class Calculator extends Component {
 
   resetCalculator() {
     this.setState({
+      expr: '',
       display: '0',
       operand: 0,
       operator: null,
@@ -169,6 +196,7 @@ class Calculator extends Component {
       <div className="Container">
         <div className="CalculatorBody">
           <CalculatorResult
+            expr={this.state.expr}
             display={this.state.display}
             operator={this.state.operator}
           />
