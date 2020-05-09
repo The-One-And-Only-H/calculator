@@ -6,8 +6,9 @@ import CalculatorKeyPad from './CalculatorKeyPad';
 
 // TO DO:
 // - Fix styles
-// - Invert expression 
-// - Add commas for long numbers 
+// - Invert expression - 1+2 displays as 2+1
+// - Allow for longers expressions - currently doesn't display 1+2+3
+// - Add commas for long numbers - see line 45-46
 // - Fix fetch call to save result to CSV
 
 const performCalculation = (op, n1, n2) => {
@@ -40,6 +41,9 @@ class Calculator extends Component {
 
   inputDigit(digit) {
     const { expr, display, newOperation } = this.state;
+
+    // Below line includes commas on left of decimal point and no commas on right of decimal point
+    digit.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
     if (this.state.display === 'Error') {
       return;
@@ -151,12 +155,12 @@ class Calculator extends Component {
   saveResult() {
     fetch("http://localhost/php/Save.php", {
       method: "post",
-      // body: "result=1000",
+      body: "result=test",
       mode: "no-cors",
       headers: 
-      {
+        {
           "Content-Type": "application/x-www-form-urlencoded"
-      },
+        },
     }).then(function(data) { console.log(data) })
   }
 
@@ -195,11 +199,13 @@ class Calculator extends Component {
     return (
       <div className="Container">
         <div className="CalculatorBody">
-          <CalculatorResult
-            expr={this.state.expr}
-            display={this.state.display}
-            operator={this.state.operator}
-          />
+          <form action="./Save.php" method="post">
+            <CalculatorResult
+              expr={this.state.expr}
+              display={this.state.display}
+              operator={this.state.operator}
+            />
+          </form>
           <CalculatorKeyPad
             buttonPressed={(type, button) => this.buttonPressed(type, button)}
           />
