@@ -1,6 +1,6 @@
 ## Docker
 
-Run this command in the terminal to run PHP:
+Run this command in the terminal to run PHP:<br />
 `docker run --rm -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html php:7.2-apache`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
