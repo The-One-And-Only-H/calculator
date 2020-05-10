@@ -16,7 +16,6 @@ class CalculatorKeyPad extends Component {
   }
 
   // Below detects numpad button clicks using keycodes
-
   handleKeyboard(e) {
     switch (e.keyCode) {
       case 48:

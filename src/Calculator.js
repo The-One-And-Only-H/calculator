@@ -8,9 +8,9 @@ import commify from './Commify';
 
 // TO DO:
 // - Tidy styles
-// - Fix leading zero code (line 57-60)
-// - Add commas to expression
-// - Check operators in expression - x displays as *
+// - Shrink font size dependent on number of digits in display and expression
+// - Fix leading zero code in inputDigit
+// - Fix getExpression function
 // - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
@@ -41,11 +41,27 @@ class Calculator extends Component {
     };
   }
 
-  // getExpression(operand1, operator, operand2)
-  // return `${commify(operand1)} ${operator} ${commify(operand2)}`
-  // but if operator is null it would return `${commify(operand2)}`
-  // not only that: you can check if operator is '*' in which case you replace it with a 'x'
-  // and likewise for '/' converted into the pretty division symbol
+  // WIP: below function to add commas to expression and replace symbols
+  getExpression() {
+    const { operand, operator } = this.state;
+
+    if (this.state.operand === null) {
+      return `${commify(operand)}`;
+    }
+
+    if (this.state.operator === "*") {
+      return "x";
+    }
+
+    if (this.state.operator === "/") {
+      return "÷";
+    }
+
+    this.setState({
+      expr: `${commify(operand)} ${operator} ${commify(operand)}`,
+      operator: operator,
+    });
+  }
 
   inputDigit(digit) {
     const { expr, display, newOperation } = this.state;    
