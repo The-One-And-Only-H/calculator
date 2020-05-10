@@ -10,6 +10,7 @@ import CalculatorKeyPad from './CalculatorKeyPad';
 // - Allow for longers expressions - currently doesn't display 1+2+3
 // - Add commas for long numbers - see line 45-46
 // - Fix fetch call to save result to CSV
+// - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
   switch (op) {
@@ -43,9 +44,14 @@ class Calculator extends Component {
     const { expr, display, newOperation } = this.state;
 
     // Below line includes commas on left of decimal point and no commas on right of decimal point
-    digit.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    // digit.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 
     if (this.state.display === 'Error') {
+      return;
+    }
+
+    // Prevents leading zeros from displaying
+    if (digit === 0 && (this.state.display === '0' || newOperation)) {
       return;
     }
 
