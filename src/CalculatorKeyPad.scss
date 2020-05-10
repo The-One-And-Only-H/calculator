@@ -6,61 +6,108 @@
 .Numbers {
   flex: 1 0 21%;
   width: 20%;
-  height: 54px;
-  font-size: 15px;
-  color: rgb(252, 3, 215);
-  border-right: 1px solid rgba(55, 55, 55, 0.05);
-  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  height: 60px;
+  font-size: 25px;
+  color: rgb(255,255,255);
   outline: none;
+  background-color: rgb(246,130,122);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 }
 
 .Zero {
   text-align: left;
-  padding-left: 28px;
   width: 50%;
-  height: 54px;
-  font-size: 15px;
-  color: rgb(252, 3, 215);
-  border-right: 1px solid rgba(55, 55, 55, 0.05);
-  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  height: 60px;
+  font-size: 25px;
+  color: rgb(255,255,255);
   outline: none;
+  background-color: rgb(246,130,122);
+  padding: 0;
+  padding-left: 28px;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 }
 
 .Symbols {
   flex: 1 0 21%;
   width: 20%;
-  height: 54px;
-  font-size: 15px;
-  border-right: 1px solid rgba(55, 55, 55, 0.05);
-  border-bottom: 1px solid rgba(55, 55, 55, 0.05);
+  height: 60px;
+  font-size: 30px;
   outline: none;
+  background-color: rgb(247,186,134);
+  color: rgb(255,255,255);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
+}
+
+.Cancel {
+  flex: 1 0 21%;
+  width: 20%;
+  height: 60px;
+  font-size: 25px;
+  outline: none;
+  background-color: rgb(236,71,92);
+  color: rgb(255,255,255);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 }
 
 .Save {
   width: 50%;
-  height: 54px;
-  font-size: 15px;
-  background-color: rgb(252, 3, 215);
-  color: white;
+  height: 60px;
+  font-size: 25px;
+  background-color: rgb(236,71,92);
+  color: rgb(255,255,255);
   outline: none;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
+}
+
+
+.Decimal {
+  flex: 1 0 21%;
+  width: 20%;
+  height: 60px;
+  font-size: 25px;
+  outline: none;
+  background-color: rgb(246,130,122);
+  color: rgb(255,255,255);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 }
 
 .Multiply {
   flex: 1 0 21%;
   width: 20%;
-  height: 54px;
-  font-size: 17px;
+  height: 60px;
+  font-size: 30px;
   outline: none;
+  background-color: rgb(247,186,134);
+  color: rgb(255,255,255);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 
-  .SelectedSymbol {
+  .SymbolRotation {
     transform: rotate(45deg);
   }
 }
 
 .Equals {
   width: 25%;
-  height: 54px;
-  font-size: 15px;
+  height: 60px;
+  font-size: 30px;
   outline: none;
+  background-color: rgb(247,186,134);
+  color: rgb(255,255,255);
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(77,87,91, 0.4);
 }
 

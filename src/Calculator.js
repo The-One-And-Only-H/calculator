@@ -4,11 +4,13 @@ import './Calculator.scss';
 import CalculatorResult from './CalculatorResult';
 import CalculatorKeyPad from './CalculatorKeyPad';
 
+import commify from './Commify';
+
 // TO DO:
-// - Fix styles
+// - Tidy styles
+// - Fix leading zero code (line 57-60)
+// - Add commas to expression
 // - Check operators in expression - x displays as *
-// - Add commas for long numbers - see line 45-46
-// - Fix fetch call to save result to CSV
 // - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
@@ -39,11 +41,14 @@ class Calculator extends Component {
     };
   }
 
-  inputDigit(digit) {
-    const { expr, display, newOperation } = this.state;
+  // getExpression(operand1, operator, operand2)
+  // return `${commify(operand1)} ${operator} ${commify(operand2)}`
+  // but if operator is null it would return `${commify(operand2)}`
+  // not only that: you can check if operator is '*' in which case you replace it with a 'x'
+  // and likewise for '/' converted into the pretty division symbol
 
-    // Below line includes commas on left of decimal point and no commas on right of decimal point
-    // digit.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  inputDigit(digit) {
+    const { expr, display, newOperation } = this.state;    
 
     if (this.state.display === 'Error') {
       return;
@@ -106,7 +111,7 @@ class Calculator extends Component {
     }
 
     this.setState({
-      expr:  `${operand} ${operator} ${display} =`,
+      expr: `${commify(operand)} ${operator} ${commify(display)} =`,
       display: String(result),
       operand: result,
       operator: null,
@@ -160,7 +165,7 @@ class Calculator extends Component {
   saveResult() {
     fetch("http://localhost/php/Save.php", {
       method: "post",
-      body: "result=test",
+      body: `result=${this.state.display}`,
       mode: "no-cors",
       headers: 
         {
