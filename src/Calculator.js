@@ -6,10 +6,8 @@ import CalculatorKeyPad from './CalculatorKeyPad';
 
 // TO DO:
 // - Fix styles
-// - Invert expression - 1+2 displays as 2+1
 // - Check operators in expression - x displays as *
-// - Allow for longers expressions - currently doesn't display 1+2+3
-// - Add commas for long numbers - see line 47-48
+// - Add commas for long numbers - see line 45-46
 // - Fix fetch call to save result to CSV
 // - Update README when complete
 
@@ -108,7 +106,7 @@ class Calculator extends Component {
     }
 
     this.setState({
-      expr: String(display) + String(operator) + String(operand) + '=',
+      expr:  `${operand} ${operator} ${display} =`,
       display: String(result),
       operand: result,
       operator: null,
@@ -134,7 +132,7 @@ class Calculator extends Component {
 
     // Store the next operation to perform
     this.setState({ 
-      expr: String(display) + String(nextOperator),
+      expr: `${display} ${nextOperator} `,
       operator: nextOperator 
     });
   }
