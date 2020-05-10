@@ -7,8 +7,9 @@ import CalculatorKeyPad from './CalculatorKeyPad';
 // TO DO:
 // - Fix styles
 // - Invert expression - 1+2 displays as 2+1
+// - Check operators in expression - x displays as *
 // - Allow for longers expressions - currently doesn't display 1+2+3
-// - Add commas for long numbers - see line 45-46
+// - Add commas for long numbers - see line 47-48
 // - Fix fetch call to save result to CSV
 // - Update README when complete
 
@@ -56,8 +57,8 @@ class Calculator extends Component {
     }
 
     this.setState({
-      expr: expr + String(digit),
-      display: newOperation ? String(digit) : display + String(digit),
+      expr: expr + digit,
+      display: newOperation ? digit : display + digit,
       newOperation: false,
     });
   }
