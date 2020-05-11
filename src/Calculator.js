@@ -98,9 +98,14 @@ class Calculator extends Component {
   }
 
   handleEqual() {
-    const { display, operator, operand } = this.state;
+    const { expr, display, operator, operand } = this.state;
 
     if (display === 'Error') {
+      return;
+    }
+
+    // Prevents multiple equals
+    if (expr) {
       return;
     }
 
@@ -109,8 +114,8 @@ class Calculator extends Component {
     let result;
 
     if (operator !== null) {
-      // There is an operation to perform: do the math and prepare the result
-      // as the operand for the following operation
+      // There is an operation to perform: 
+      // do the math and prepare the result as the operand for the following operation
       result = performCalculation(operator, operand, op2);
 
       if (!Number.isFinite(result)) {
@@ -123,7 +128,7 @@ class Calculator extends Component {
       // Prevent display of long decimals
       result = parseFloat(result.toFixed(15));
     } else {
-      // = pressed but no operation dialled in
+      // Equals pressed but no operation dialled in
       result = op2;
     }
 
@@ -149,34 +154,13 @@ class Calculator extends Component {
       return;
     }
 
-    // perform the operation in case we are in a chain like 1 + 2 + 3
+    // Perform the operation in case we are in a chain like 1 + 2 + 3
     this.handleEqual();
 
     // Store the next operation to perform
     this.setState({ 
       expr: null,
       operator: nextOperator 
-    });
-  }
-
-  invertDisplay() {
-    let { display, operand } = this.state;
-    const { newOperation } = this.state;
-
-    if (display === 'Error') {
-      return;
-    }
-
-    display = String(-parseFloat(display));
-    if (newOperation && operand !== null) {
-      // Handle the case of user typing 10 * - for example
-      // the value in the display was just copied in the operand so we have to flip it too
-      operand = -operand;
-    }
-    this.setState({
-      expr: null,
-      display,
-      operand,
     });
   }
 
@@ -193,7 +177,6 @@ class Calculator extends Component {
   }
 
   buttonPressed(type, button) {
-    // console.log(type, button);
     if (type === 'op') {
       return this.handleOperator(button);
     } else if (type === 'save') {
@@ -204,8 +187,6 @@ class Calculator extends Component {
       return this.inputDigit(button);
     } else if (type === 'dot') {
       return this.inputDecimal();
-    } else if (type === 'inv') {
-      return this.invertDisplay();
     } else if (type === 'equal') {
       return this.handleEqual(button);
     }
@@ -223,7 +204,6 @@ class Calculator extends Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <div className="Container">
         <div className="CalculatorBody">
