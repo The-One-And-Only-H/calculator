@@ -9,15 +9,14 @@ import commify from './Commify';
 // TO DO:
 // - Tidy styles
 // - Shrink font size dependent on number of digits in display and expression
-// - Fix leading zero code in inputDigit
 // - Fix getExpression function
 // - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
   switch (op) {
-    case '/':
+    case '÷':
       return n1 / n2;
-    case '*':
+    case 'x':
       return n1 * n2;
     case '+':
       return n1 + n2;
@@ -41,37 +40,28 @@ class Calculator extends Component {
     };
   }
 
-  // WIP: below function to add commas to expression and replace symbols
+  // Adds commas to expression 
   getExpression() {
-    const { operand, operator } = this.state;
+    const { operand, operator, display } = this.state;
 
-    if (this.state.operand === null) {
-      return `${commify(operand)}`;
-    }
-
-    if (this.state.operator === "*") {
-      return "x";
-    }
-
-    if (this.state.operator === "/") {
-      return "÷";
+    if (operand === null) {
+      return;
     }
 
     this.setState({
-      expr: `${commify(operand)} ${operator} ${commify(operand)}`,
-      operator: operator,
+      expr: `${commify(operand)} ${operator} ${commify(display)}`,
     });
   }
 
   inputDigit(digit) {
     const { expr, display, newOperation } = this.state;    
 
-    if (this.state.display === 'Error') {
+    if (display === 'Error') {
       return;
     }
 
     // Prevents leading zeros from displaying
-    if (digit === 0 && (this.state.display === '0' || newOperation)) {
+    if (digit === '0' && (display === '0' || newOperation)) {
       return;
     }
 
@@ -85,7 +75,7 @@ class Calculator extends Component {
   inputDecimal() {
     const { display } = this.state;
 
-    if (this.state.display === 'Error') {
+    if (display === 'Error') {
       return;
     }
 

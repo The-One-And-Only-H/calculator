@@ -49,7 +49,7 @@ class CalculatorKeyPad extends Component {
         return this.props.buttonPressed('num', '9');
 
       case 106:
-        return this.props.buttonPressed('op', '*');
+        return this.props.buttonPressed('op', 'x');
 
       case 107:
         return this.props.buttonPressed('op', '+');
@@ -61,7 +61,7 @@ class CalculatorKeyPad extends Component {
         return this.props.buttonPressed('dot');
 
       case 111:
-        return this.props.buttonPressed('op', '/');
+        return this.props.buttonPressed('op', '÷');
 
       case 13:
       case 187:
@@ -81,7 +81,7 @@ class CalculatorKeyPad extends Component {
         <button className="Save" name="S" onClick={() => this.props.buttonPressed('save')}>
           SAVE
         </button>
-        <button className="Symbols" name="÷" onClick={() => this.props.buttonPressed('op', '/')}>
+        <button className="Symbols" name="÷" onClick={() => this.props.buttonPressed('op', '÷')}>
           ÷
         </button>
 
@@ -91,7 +91,7 @@ class CalculatorKeyPad extends Component {
         <button className="Zero" name="0" onClick={() => this.props.buttonPressed('num', '0')}>
           0
         </button>
-        <button className="Multiply" name="x" onClick={() => this.props.buttonPressed('op', '*')}>
+        <button className="Multiply" name="x" onClick={() => this.props.buttonPressed('op', 'x')}>
           <div className="SymbolRotation">+</div>
         </button>
 
