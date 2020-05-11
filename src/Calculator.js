@@ -9,9 +9,6 @@ import commify from './Commify';
 // TO DO:
 // - Tidy styles
 // - Shrink font size dependent on number of digits in display and expression
-// - Fix getExpression function
-// - Bug: typing 2 + 0 produces 2 + 2 - see inputDigit
-// - Bug: typing 2 = produces 0 null 2 = in expression
 // - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
@@ -34,7 +31,7 @@ class Calculator extends Component {
     super();
 
     this.state = {
-      expr: '',
+      expr: null,
       display: '0',
       operand: 0,
       operator: null,
@@ -44,37 +41,41 @@ class Calculator extends Component {
 
   // Adds commas to expression 
   getExpression() {
-    const { operand, operator, display } = this.state;
+    const { expr, newOperation, display, operand, operator } = this.state;
 
-    if (operand === null) {
-      return;
+    if (expr) {
+      return expr;
     }
 
-    this.setState({
-      expr: `${commify(operand)} ${operator} ${commify(display)}`,
-    });
+    if (operator === null) {
+      return commify(display);
+    }
+
+    if (newOperation) {
+      return`${commify(operand)} ${operator}`
+    }
+
+    return`${commify(operand)} ${operator} ${commify(display)}`
   }
 
   inputDigit(digit) {
-    const { expr, display, newOperation } = this.state;    
+    const { display, newOperation } = this.state;    
 
     if (display === 'Error') {
       return;
     }
 
-    // Prevents leading zeros from displaying
-    if (digit === '0' && (display === '0' && newOperation)) {
-      return;
-    }
+    let newDisplay = newOperation ? digit : display + digit;
 
-    // Allows for cases where the following operand is zero
-    if (newOperation === '0') {
-      return;
+    // Prevents multiple zeros and allows for floats beginning with zero
+    newDisplay = newDisplay.replace(/^0*/, "");
+    if (newDisplay === "" || newDisplay[0] === '.') {
+      newDisplay = '0' + newDisplay;
     }
 
     this.setState({
-      expr: expr + digit,
-      display: newOperation ? digit : display + digit,
+      expr: null,
+      display: newDisplay,
       newOperation: false,
     });
   }
@@ -89,7 +90,10 @@ class Calculator extends Component {
     // If the display does not contain a decimal point
     if (!display.includes('.')) {
       // Append the decimal point
-      this.setState({ expr: `${display}.`, display: `${display}.`, newOperation: false });
+      this.setState({ 
+        display: `${display}.`, 
+        newOperation: false 
+      });
     }
   }
 
@@ -124,7 +128,7 @@ class Calculator extends Component {
     }
 
     this.setState({
-      expr: `${commify(operand)} ${operator} ${commify(display)} =`,
+      expr: `${this.getExpression()} =`,
       display: String(result),
       operand: result,
       operator: null,
@@ -150,7 +154,7 @@ class Calculator extends Component {
 
     // Store the next operation to perform
     this.setState({ 
-      expr: `${display} ${nextOperator} `,
+      expr: null,
       operator: nextOperator 
     });
   }
@@ -170,6 +174,7 @@ class Calculator extends Component {
       operand = -operand;
     }
     this.setState({
+      expr: null,
       display,
       operand,
     });
@@ -209,7 +214,7 @@ class Calculator extends Component {
 
   resetCalculator() {
     this.setState({
-      expr: '',
+      expr: null,
       display: '0',
       operand: 0,
       operator: null,
@@ -224,7 +229,7 @@ class Calculator extends Component {
         <div className="CalculatorBody">
           <form action="./Save.php" method="post">
             <CalculatorResult
-              expr={this.state.expr}
+              expr={this.getExpression()}
               display={this.state.display}
               operator={this.state.operator}
             />
