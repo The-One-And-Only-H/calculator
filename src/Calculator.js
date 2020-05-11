@@ -10,6 +10,8 @@ import commify from './Commify';
 // - Tidy styles
 // - Shrink font size dependent on number of digits in display and expression
 // - Fix getExpression function
+// - Bug: typing 2 + 0 produces 2 + 2 - see inputDigit
+// - Bug: typing 2 = produces 0 null 2 = in expression
 // - Update README when complete
 
 const performCalculation = (op, n1, n2) => {
@@ -61,7 +63,12 @@ class Calculator extends Component {
     }
 
     // Prevents leading zeros from displaying
-    if (digit === '0' && (display === '0' || newOperation)) {
+    if (digit === '0' && (display === '0' && newOperation)) {
+      return;
+    }
+
+    // Allows for cases where the following operand is zero
+    if (newOperation === '0') {
       return;
     }
 
