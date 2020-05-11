@@ -1,110 +1,130 @@
+$layout: 1 0 21%;
+
+$font-type: Avenir;
+$small-font: 25px;
+$large-font: 30px;
+$bold: 500;
+
+$other-lines: none;
+$horizontal-border: 1px solid rgba(77,87,91, 0.4);
+
+$font-color: rgb(255,255,255);
+$main-color: rgb(246,130,122);
+$symbols-color: rgb(247,186,134);
+$other-color: rgb(236,71,92);
+
+$no-padding: 0;
+$button-height: 60px;
+$narrow: 20%;
+$wide: 50%;
+
 .Buttons {
   display: flex;
   flex-wrap: wrap;
 }
 
 .Numbers {
-  flex: 1 0 21%;
-  width: 20%;
-  height: 60px;
-  font-size: 25px;
-  color: rgb(255,255,255);
-  outline: none;
-  background-color: rgb(246,130,122);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
+  flex: $layout;
+  width: $narrow;
+  height: $button-height;
+  font-size: $small-font;
+  color: $font-color;
+  outline: $other-lines;
+  background-color: $main-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
 }
 
 .Zero {
-  text-align: left;
-  width: 50%;
-  height: 60px;
-  font-size: 25px;
-  color: rgb(255,255,255);
-  outline: none;
-  background-color: rgb(246,130,122);
-  padding: 0;
+  width: $wide;
+  height: $button-height;
+  font-size: $small-font;
+  color: $font-color;
+  outline: $other-lines;
+  background-color: $main-color;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
+  padding: $no-padding;
   padding-left: 28px;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
+  text-align: left;
 }
 
 .Symbols {
-  flex: 1 0 21%;
-  width: 20%;
-  height: 60px;
-  font-size: 30px;
-  outline: none;
-  background-color: rgb(247,186,134);
-  color: rgb(255,255,255);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
+  flex: $layout;
+  width: $narrow;
+  height: $button-height;
+  font-size: $large-font;
+  outline: $other-lines;
+  background-color: $symbols-color;
+  color: $font-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
 }
 
 .Cancel {
-  flex: 1 0 21%;
-  width: 20%;
-  height: 60px;
-  font-size: 25px;
-  outline: none;
-  background-color: rgb(236,71,92);
-  color: rgb(255,255,255);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
+  flex: $layout;
+  width: $narrow;
+  height: $button-height;
+  font-size: $small-font;
+  outline: $other-lines;
+  background-color: $other-color;
+  color: $font-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
 }
 
 .Save {
-  width: 50%;
-  height: 60px;
-  font-size: 25px;
-  background-color: rgb(236,71,92);
-  color: rgb(255,255,255);
-  outline: none;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
+  width: $wide;
+  height: $button-height;
+  font-size: $small-font;
+  background-color: $other-color;
+  color: $font-color;
+  outline: $other-lines;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
 }
 
 
 .Decimal {
-  flex: 1 0 21%;
-  width: 20%;
-  height: 60px;
-  font-size: 25px;
-  outline: none;
-  background-color: rgb(246,130,122);
-  color: rgb(255,255,255);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
+  flex: $layout;
+  width: $narrow;
+  height: $button-height;
+  font-size: $small-font;
+  outline: $other-lines;
+  background-color: $main-color;
+  color: $font-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
 }
 
 .Multiply {
-  flex: 1 0 21%;
-  width: 20%;
-  height: 60px;
-  font-size: 30px;
-  outline: none;
-  background-color: rgb(247,186,134);
-  color: rgb(255,255,255);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
+  flex: $layout;
+  width: $narrow;
+  height: $button-height;
+  font-size: $large-font;
+  outline: $other-lines;
+  background-color: $symbols-color;
+  color: $font-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
 
   .SymbolRotation {
     transform: rotate(45deg);
@@ -112,16 +132,16 @@
 }
 
 .Equals {
+  height: $button-height;
+  font-size: $large-font;
+  outline: $other-lines;
+  background-color: $symbols-color;
+  color: $font-color;
+  padding: $no-padding;
+  border: $other-lines;
+  border-bottom: $horizontal-border;
+  font-family: $font-type;
+  font-weight: $bold;
   width: 25%;
-  height: 60px;
-  font-size: 30px;
-  outline: none;
-  background-color: rgb(247,186,134);
-  color: rgb(255,255,255);
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid rgba(77,87,91, 0.4);
-  font-family: Avenir;
-  font-weight: 500;
 }
 

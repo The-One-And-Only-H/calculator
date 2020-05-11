@@ -1,27 +1,27 @@
+$font-type: Avenir;
+
 .Wrapper {
-  padding: 20px;
-  text-align: right;
-  background: rgb(41,54,59);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: right;
+  padding: 20px;
+  background: rgb(41,54,59);
 }
 
 .Expression {
-  font-size: 25px;
+  font-family: $font-type;
   height: 20px;
   margin: 5px;
-  text-align: right;
+  font-size: 25px;
   color: rgb(77,87,91);
-  font-family: Avenir;
 }
 
 
 .Result {
+  font-family: $font-type;
   font-size: 60px;
   margin: 5px;
   padding-bottom: 10px;
-  text-align: right;
   color: rgb(255,255,255);
-  font-family: Avenir;
 }

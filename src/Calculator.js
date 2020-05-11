@@ -6,11 +6,6 @@ import CalculatorKeyPad from './CalculatorKeyPad';
 
 import commify from './Commify';
 
-// TO DO:
-// - Tidy styles
-// - Shrink font size dependent on number of digits in display and expression
-// - Update README when complete
-
 const performCalculation = (op, n1, n2) => {
   switch (op) {
     case '÷':
@@ -43,6 +38,7 @@ class Calculator extends Component {
   getExpression() {
     const { expr, newOperation, display, operand, operator } = this.state;
 
+    // Shows the whole expression after equals
     if (expr) {
       return expr;
     }
@@ -115,7 +111,7 @@ class Calculator extends Component {
 
     if (operator !== null) {
       // There is an operation to perform: 
-      // do the math and prepare the result as the operand for the following operation
+      // do the maths and prepare the result as the operand for the following operation
       result = performCalculation(operator, operand, op2);
 
       if (!Number.isFinite(result)) {
