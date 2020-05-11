@@ -6,9 +6,12 @@ Please find my calculator logic in `src/Calculator.js` and keypad functionality 
 
 ## Docker
 
-Run this command in the terminal to run PHP:<br />
+Run this command in the terminal to run PHP: <br />
 
 `docker run --rm -p 80:80 --name my-apache-php-app -v "$PWD":/var/www/html php:7.2-apache`
+
+<br />
+<br />
 
 Below is the original README from the Create React App repo on GitHub:
 
