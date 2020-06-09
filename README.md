@@ -1,7 +1,5 @@
 # Calculator
 
-iTech Frontend tech test
-
 Please find my calculator logic in `src/Calculator.js` and keypad functionality in `src/CalculatorKeyPad.js`
 
 ## Docker
