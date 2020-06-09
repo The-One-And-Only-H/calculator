@@ -2,6 +2,14 @@
 
 Please find my calculator logic in `src/Calculator.js` and keypad functionality in `src/CalculatorKeyPad.js`
 
+Tech stack:
+
+- HTML5
+- Sass
+- JavaScript
+- React
+- PHP
+
 ## Docker
 
 Run this command in the terminal to run PHP:
